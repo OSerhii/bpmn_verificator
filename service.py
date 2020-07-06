@@ -34,7 +34,6 @@ def retrieve_delegates_from_source(path):
     dct = dict()
     lst = list()
     for path, dirs, files in os.walk(path):
-        # if len(dirs) == 0:
         dct[os.path.basename(path)] = files
         delegates = [item.split(".")[0] for item in files]
         lst.extend(delegates)
