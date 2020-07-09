@@ -9,14 +9,15 @@ KOTLIN_DELEGATES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 BPMN_DELEGATES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                    "orchestrator/src/main/resources/processes")
 
-
+print("1. Retrieving source code")
 retrieve_source_from_repository("orchestrator", "dev")
 
+print("2. Retrieving delegates from source code")
 java_delegates = retrieve_delegates_from_source(JAVA_DELEGATES_PATH)
 kotlin_delegates = retrieve_delegates_from_source(KOTLIN_DELEGATES_PATH)
 source_delegates = java_delegates + kotlin_delegates
 
-
+print("3. Retrieving delegates from BPMN schemes and verify that them implemented in source code")
 files = retrieve_bpmn_file_names(BPMN_DELEGATES_PATH)
 error_lst = list()
 
